@@ -5,7 +5,7 @@ export const metadata = {
   description: "Student management",
 };
 
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children }: AppProps) => {
   return (
     <html lang="en">
       <body>
