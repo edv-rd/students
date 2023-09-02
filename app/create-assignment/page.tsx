@@ -1,9 +1,11 @@
 "use client";
 
 import AssignmentForm from "@components/AssignmentForm";
+import { connectToDB } from "@utils/database";
 
 function CreateAssignment() {
   const createAssignment = () => {
+    connectToDB();
     console.log("Creating assignment...");
   };
 
