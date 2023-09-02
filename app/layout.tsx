@@ -1,3 +1,4 @@
+import Nav from "@components/Nav";
 import "@styles/globals.css";
 
 export declare interface AppProps {
@@ -13,7 +14,10 @@ const RootLayout = ({ children }: AppProps) => {
   return (
     <html lang="en">
       <body>
-        <main className="app">{children}</main>
+        <main className="app">
+          <Nav />
+          {children}
+        </main>
       </body>
     </html>
   );

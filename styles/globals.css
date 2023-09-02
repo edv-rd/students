@@ -7,3 +7,11 @@
 body {
   font-family: "Inter", sans-serif;
 }
+
+.head_text {
+  @apply text-5xl font-extrabold text-black;
+}
+
+.link_text {
+  @apply text-3xl font-bold text-black hover:text-blue-900;
+}
