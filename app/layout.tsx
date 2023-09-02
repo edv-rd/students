@@ -1,5 +1,9 @@
 import "@styles/globals.css";
 
+export declare interface AppProps {
+  children?: React.ReactNode;
+}
+
 export const metadata = {
   title: "Students",
   description: "Student management",
