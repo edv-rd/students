@@ -3,6 +3,7 @@ import mongoose, { Schema } from "mongoose";
 import { Types } from "mongoose";
 
 export interface Users extends mongoose.Document {
+  _id: Types.ObjectId;
   name: string;
   email: string;
   role: "admin" | "teacher" | "student";
