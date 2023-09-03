@@ -4,7 +4,7 @@ import AssignmentForm from "@components/AssignmentForm";
 import { connectToDB } from "@utils/database";
 
 function CreateAssignment() {
-  const createAssignment = () => {
+  const createAssignment = (assignment: Object) => {
     connectToDB();
     console.log("Creating assignment...");
   };
