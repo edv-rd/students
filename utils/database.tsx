@@ -1,8 +1,15 @@
 import mongoose from "mongoose";
 
 let isConnected = false; // track the connection
+let DB_URL: string;
 
 export const connectToDB = async () => {
+  if (process.env.DB_URL) {
+    DB_URL = `${process.env["DB_URL"]}`;
+  } else {
+    DB_URL = "mongodb://localhost:27017";
+  }
+
   mongoose.set("strictQuery", true);
 
   if (isConnected) {
@@ -10,8 +17,10 @@ export const connectToDB = async () => {
     return;
   }
 
+  console.log(DB_URL);
+
   try {
-    await mongoose.connect(`${process.env["DB_URL"]}`, {
+    await mongoose.connect(DB_URL, {
       dbName: "students",
     });
 

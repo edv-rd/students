@@ -6,7 +6,13 @@ type Props = {
   assignments: Assignments[];
 };
 
-function ListAssignments({ assignments }: Props) {
+export declare interface IGetAssignments {
+  (assignments: Assignments[]): Promise<Assignments[]>;
+}
+
+async function ListAssignments() {
+  const assignments = await getAssignments();
+
   return (
     <>
       {assignments ? (
@@ -23,16 +29,17 @@ function ListAssignments({ assignments }: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+const getAssignments = async () => {
+  console.log("server side props?");
   await connectToDB();
   /* find all the data in our database */
-  const assignments = await Assignment.find({});
+  let assignments = await Assignment.find({});
   console.log(assignments);
 
   /* Ensures all objectIds and nested objectIds are serialized as JSON data */
   //const assignments = await result;
 
-  return { props: { assignments: assignments } };
+  return assignments;
 };
 
 export default ListAssignments;

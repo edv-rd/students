@@ -9,10 +9,10 @@ export interface Assignments extends mongoose.Document {
   created: Date;
   deadline: Date;
   archived: boolean;
-  assigned_users: Types.ObjectId[];
-  assigned_materials: Types.ObjectId[];
-  assigned_grades: Types.ObjectId[];
-  assigned_solutions: Types.ObjectId[];
+  assigned_users?: Types.ObjectId[];
+  assigned_materials?: Types.ObjectId[];
+  assigned_grades?: Types.ObjectId[];
+  assigned_solutions?: Types.ObjectId[];
 }
 
 const AssignmentSchema = new mongoose.Schema<Assignments>({
