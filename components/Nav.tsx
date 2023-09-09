@@ -12,6 +12,9 @@ const Nav = () => {
       <Link href="/list-assignments" className="flex">
         <h2 className="link_text">List assignments</h2>
       </Link>
+      <Link href="/create-user" className="flex">
+        <h2 className="link_text">Create user</h2>
+      </Link>
     </nav>
   );
 };

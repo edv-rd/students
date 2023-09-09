@@ -1,17 +1,17 @@
 "use client";
 
-import AssignmentForm from "@components/AssignmentForm";
+import Form from "@components/Form";
 import { connectToDB } from "@utils/database";
 
-function CreateAssignment() {
-  const createAssignment = (assignment: Object) => {
-    connectToDB();
-    console.log("Creating assignment...");
-  };
+const createAssignment = async (data: Object) => {
+  await connectToDB();
+  console.log("Creating assignment...");
+};
 
+function CreateAssignment() {
   return (
-    <AssignmentForm
-      type="create_assignment"
+    <Form
+      type="assignment"
       submitting={false}
       handleSubmit={createAssignment}
     />

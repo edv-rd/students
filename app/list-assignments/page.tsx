@@ -1,6 +1,5 @@
 import { connectToDB } from "@/utils/database";
 import Assignment, { Assignments } from "@/models/assignments";
-import { GetServerSideProps } from "next";
 
 type Props = {
   assignments: Assignments[];
@@ -30,15 +29,8 @@ async function ListAssignments() {
 }
 
 const getAssignments = async () => {
-  console.log("server side props?");
   await connectToDB();
-  /* find all the data in our database */
   let assignments = await Assignment.find({});
-  console.log(assignments);
-
-  /* Ensures all objectIds and nested objectIds are serialized as JSON data */
-  //const assignments = await result;
-
   return assignments;
 };
 
