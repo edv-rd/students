@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useState, ChangeEvent, useEffect } from "react";
 
 export declare interface FormData {
-  assignment_name?: string;
+  name?: string;
   assignment_instructions?: string;
   user_name?: string;
+  user_email?: string;
   // Add other properties as needed
 }
 
@@ -29,13 +30,8 @@ function Form({ type, submitting, handleSubmit }: FormProps) {
   const handleChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ) => {
-    console.log("handleChange");
     updateFormData(event.currentTarget.name, event.currentTarget.value);
   };
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   return (
     <section className="w-full max-w-full flex-start flex-col">
@@ -50,32 +46,51 @@ function Form({ type, submitting, handleSubmit }: FormProps) {
       >
         <label>
           <span className="font-satoshi font-semibold text-base text-gray-700">
-            Assignment name
+            {type} name
           </span>
           <input
-            value={formData["assignment_name"] || ""}
-            name="assignment_name"
+            value={formData["name"] || ""}
+            name="name"
             onChange={handleChange}
             type="text"
-            placeholder="#Tag"
+            placeholder="Name"
             required
             className="form_input"
           />
         </label>
-        <label>
-          <span className="font-satoshi font-semibold text-base text-gray-700">
-            Your assignment
-          </span>
+        {type === "assignment" && (
+          <label>
+            <span className="font-satoshi font-semibold text-base text-gray-700">
+              Your assignment
+            </span>
 
-          <textarea
-            value={formData["assignment_instructions"] || ""}
-            name="assignment_instructions"
-            onChange={handleChange}
-            placeholder="Write your post here"
-            required
-            className=""
-          />
-        </label>
+            <textarea
+              value={formData["assignment_instructions"] || ""}
+              name="assignment_instructions"
+              onChange={handleChange}
+              placeholder="Write your post here"
+              required
+              className=""
+            />
+          </label>
+        )}
+
+        {type === "user" && (
+          <label>
+            <span className="font-satoshi font-semibold text-base text-gray-700">
+              User email
+            </span>
+            <input
+              value={formData["user_email"] || ""}
+              name="user_email"
+              onChange={handleChange}
+              type="text"
+              placeholder="User email"
+              required
+              className="form_input"
+            />
+          </label>
+        )}
 
         <div className="flex-end mx-3 mb-5 gap-4">
           <Link href="/" className="text-gray-500 text-sm">
