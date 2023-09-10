@@ -19,6 +19,13 @@ export declare interface FormProps {
 function Form({ type, submitting, handleSubmit }: FormProps) {
   const [formData, setFormData] = useState<FormData>({});
 
+  useEffect(() => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      type,
+    }));
+  }, [type]);
+
   const updateFormData = (formName: string, formValue: string) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -40,7 +47,10 @@ function Form({ type, submitting, handleSubmit }: FormProps) {
       <p className="desc text-left max-w-md">Create {type}</p>
 
       <form
-        onSubmit={() => handleSubmit(formData)}
+        onSubmit={() => {
+          console.log("submit");
+          handleSubmit(formData);
+        }}
         className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
       >
         <label>

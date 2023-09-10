@@ -11,7 +11,6 @@ function CreateAssignment() {
 
   const createAssignment = async (formData: Object) => {
     setSubmitting(true);
-
     console.log("Creating assignment...");
     try {
       const response = await fetch("/api/entries/new", {
@@ -20,7 +19,6 @@ function CreateAssignment() {
           formData: formData,
         }),
       });
-
       if (response.ok) {
         router.push("/");
       }
