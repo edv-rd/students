@@ -5,9 +5,8 @@ import { useState, ChangeEvent, useEffect } from "react";
 
 export declare interface FormData {
   name?: string;
-  assignment_instructions?: string;
-  user_name?: string;
-  user_email?: string;
+  instructions?: string;
+  email?: string;
   // Add other properties as needed
 }
 
@@ -65,10 +64,10 @@ function Form({ type, submitting, handleSubmit }: FormProps) {
             </span>
 
             <textarea
-              value={formData["assignment_instructions"] || ""}
-              name="assignment_instructions"
+              value={formData["instructions"] || ""}
+              name="instructions"
               onChange={handleChange}
-              placeholder="Write your post here"
+              placeholder="Write your instructions here"
               required
               className=""
             />
@@ -81,8 +80,8 @@ function Form({ type, submitting, handleSubmit }: FormProps) {
               User email
             </span>
             <input
-              value={formData["user_email"] || ""}
-              name="user_email"
+              value={formData["email"] || ""}
+              name="email"
               onChange={handleChange}
               type="text"
               placeholder="User email"

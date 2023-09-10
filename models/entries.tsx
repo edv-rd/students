@@ -2,20 +2,20 @@ import { ObjectId } from "mongodb";
 import mongoose, { Schema } from "mongoose";
 import { Types } from "mongoose";
 
-export interface Assignments extends mongoose.Document {
+export interface Entries extends mongoose.Document {
   name: string;
-  description: string;
-  instructions: string;
+  description?: string;
+  instructions?: string;
   created: Date;
-  deadline: Date;
-  archived: boolean;
+  deadline?: Date;
+  archived?: boolean;
   assigned_users?: Types.ObjectId[];
   assigned_materials?: Types.ObjectId[];
   assigned_grades?: Types.ObjectId[];
   assigned_solutions?: Types.ObjectId[];
 }
 
-const AssignmentSchema = new mongoose.Schema<Assignments>({
+const EntrySchema = new mongoose.Schema<Entries>({
   name: {
     type: String,
     required: [true, "Please provide a name for this pet."],
@@ -63,5 +63,5 @@ const AssignmentSchema = new mongoose.Schema<Assignments>({
   ],
 });
 
-export default mongoose.models.Assignment ||
-  mongoose.model<Assignments>("Assignment", AssignmentSchema);
+export default mongoose.models.Entry ||
+  mongoose.model<Entries>("Entry", EntrySchema);

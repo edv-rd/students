@@ -1,18 +1,39 @@
 "use client";
 
-import Form from "@components/Form";
-import { connectToDB } from "@utils/database";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-const createAssignment = async (data: Object) => {
-  await connectToDB();
-  console.log("Creating assignment...");
-};
+import Form from "@components/Form";
 
 function CreateAssignment() {
+  const [submitting, setSubmitting] = useState(false);
+  const router = useRouter();
+
+  const createAssignment = async (data: Object) => {
+    setSubmitting(true);
+
+    console.log("Creating assignment...");
+    try {
+      const response = await fetch("/api/entries", {
+        method: "POST",
+        body: JSON.stringify({
+          data: data,
+        }),
+      });
+
+      if (response.ok) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
   return (
     <Form
       type="assignment"
-      submitting={false}
+      submitting={submitting}
       handleSubmit={createAssignment}
     />
   );

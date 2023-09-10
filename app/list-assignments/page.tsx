@@ -1,12 +1,12 @@
 import { connectToDB } from "@/utils/database";
-import Assignment, { Assignments } from "@/models/assignments";
+import Entry, { Entries } from "@models/entries";
 
 type Props = {
-  assignments: Assignments[];
+  assignments: Entries[];
 };
 
 export declare interface IGetAssignments {
-  (assignments: Assignments[]): Promise<Assignments[]>;
+  (assignments: Entries[]): Promise<Entries[]>;
 }
 
 async function ListAssignments() {
@@ -30,7 +30,7 @@ async function ListAssignments() {
 
 const getAssignments = async () => {
   await connectToDB();
-  let assignments = await Assignment.find({});
+  let assignments = await Entry.find({});
   return assignments;
 };
 
