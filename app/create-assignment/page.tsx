@@ -14,7 +14,7 @@ function CreateAssignment() {
 
     console.log("Creating assignment...");
     try {
-      const response = await fetch("/api/entries", {
+      const response = await fetch("/api/entries/new", {
         method: "POST",
         body: JSON.stringify({
           formData: formData,
