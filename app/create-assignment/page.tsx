@@ -9,7 +9,7 @@ function CreateAssignment() {
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
 
-  const createAssignment = async (data: Object) => {
+  const createAssignment = async (formData: Object) => {
     setSubmitting(true);
 
     console.log("Creating assignment...");
@@ -17,7 +17,7 @@ function CreateAssignment() {
       const response = await fetch("/api/entries", {
         method: "POST",
         body: JSON.stringify({
-          data: data,
+          formData: formData,
         }),
       });
 

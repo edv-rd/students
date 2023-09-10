@@ -6,7 +6,7 @@ export interface Entries extends mongoose.Document {
   name: string;
   description?: string;
   instructions?: string;
-  created: Date;
+  created?: Date;
   deadline?: Date;
   archived?: boolean;
   assigned_users?: Types.ObjectId[];
