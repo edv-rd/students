@@ -7,7 +7,7 @@ export const connectToDB = async () => {
   if (process.env.DB_URL) {
     DB_URL = `${process.env["DB_URL"]}`;
   } else {
-    DB_URL = "mongodb://localhost:27017";
+    DB_URL = "mongodb://127.0.0.1:27017";
   }
 
   mongoose.set("strictQuery", true);

@@ -18,6 +18,7 @@ async function ListAssignments() {
         assignments.map((assignment) => (
           <div key={assignment._id}>
             <p>{assignment.name}</p>
+            <p>{assignment.type}</p>
             <h2>{assignment.instructions}</h2>
           </div>
         ))

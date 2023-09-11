@@ -7,6 +7,7 @@ export declare interface FormData {
   name?: string;
   instructions?: string;
   email?: string;
+
   // Add other properties as needed
 }
 
@@ -18,13 +19,6 @@ export declare interface FormProps {
 
 function Form({ type, submitting, handleSubmit }: FormProps) {
   const [formData, setFormData] = useState<FormData>({});
-
-  useEffect(() => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      type,
-    }));
-  }, [type]);
 
   const updateFormData = (formName: string, formValue: string) => {
     setFormData((prevFormData) => ({
