@@ -1,5 +1,6 @@
 import { connectToDB } from "@/utils/database";
 import Entry, { Entries } from "@models/entries";
+import EntryBadge from "@components/EntryBadge";
 
 type Props = {
   assignments: Entries[];
@@ -16,11 +17,7 @@ async function ListAssignments() {
     <>
       {assignments ? (
         assignments.map((assignment) => (
-          <div key={assignment._id}>
-            <p>{assignment.name}</p>
-            <p>{assignment.type}</p>
-            <h2>{assignment.instructions}</h2>
-          </div>
+          <EntryBadge key={assignment._id} entry={assignment} />
         ))
       ) : (
         <h1>No assignments yet</h1>
