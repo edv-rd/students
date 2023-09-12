@@ -5,7 +5,7 @@ import React from "react";
 declare interface AssignmentObject {
   entry: object;
   _id: number;
-  name: string;
+  name?: string;
   instructions?: string;
 }
 
