@@ -7,6 +7,8 @@ export const POST = async (request: Request) => {
   try {
     await connectToDB();
 
+    console.log(formData);
+
     const newEntry = new Entry(formData);
 
     await newEntry.save();

@@ -15,3 +15,11 @@ body {
 .link_text {
   @apply text-3xl font-bold text-black hover:text-blue-900;
 }
+
+.form_input {
+  @apply mb-5 rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-yellow-500;
+}
+
+.submit_button {
+  @apply px-5 py-1.5 text-sm bg-orange-500 rounded-full text-black;
+}

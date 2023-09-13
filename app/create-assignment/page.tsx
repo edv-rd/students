@@ -27,11 +27,13 @@ function CreateAssignment() {
     }
   };
   return (
-    <Form
-      type="assignment"
-      submitting={submitting}
-      handleSubmit={createAssignment}
-    />
+    <div className="flex items-center justify-center h-screen">
+      <Form
+        type="assignment"
+        submitting={submitting}
+        handleSubmit={createAssignment}
+      />
+    </div>
   );
 }
 

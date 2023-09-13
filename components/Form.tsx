@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent } from "react";
 
 export declare interface FormData {
   name?: string;
@@ -34,55 +34,39 @@ function Form({ type, submitting, handleSubmit }: FormProps) {
   };
 
   return (
-    <section className="w-full max-w-full flex-start flex-col">
-      <h1 className="head_text text-left">
-        <span className="blue_gradient">Create {type} </span>
-      </h1>
-      <p className="desc text-left max-w-md">Create {type}</p>
+    <section className="min-w-fit flex-col border bg-white px-6 py-14 shadow-md rounded-[4px]">
+      <div className="mb-8 flex flex-col justify-center">
+        <h1 className="head_text text-left">Create {type}</h1>
+      </div>
 
       <form
         onSubmit={() => {
-          console.log("submit");
           handleSubmit(formData);
         }}
         className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
       >
-        <label>
-          <span className="font-satoshi font-semibold text-base text-gray-700">
-            {type} name
-          </span>
+        <div className="flex flex-col text-sm rounded-md">
           <input
             value={formData["name"] || ""}
             name="name"
             onChange={handleChange}
             type="text"
-            placeholder="Name"
+            placeholder={`Enter ${type} name`}
             required
             className="form_input"
           />
-        </label>
-        {type === "assignment" && (
-          <label>
-            <span className="font-satoshi font-semibold text-base text-gray-700">
-              Your assignment
-            </span>
 
+          {type === "assignment" && (
             <textarea
               value={formData["instructions"] || ""}
               name="instructions"
               onChange={handleChange}
               placeholder="Write your instructions here"
-              required
-              className=""
+              className="form_input"
             />
-          </label>
-        )}
+          )}
 
-        {type === "user" && (
-          <label>
-            <span className="font-satoshi font-semibold text-base text-gray-700">
-              User email
-            </span>
+          {type === "user" && (
             <input
               value={formData["email"] || ""}
               name="email"
@@ -92,19 +76,10 @@ function Form({ type, submitting, handleSubmit }: FormProps) {
               required
               className="form_input"
             />
-          </label>
-        )}
-
-        <div className="flex-end mx-3 mb-5 gap-4">
-          <Link href="/" className="text-gray-500 text-sm">
-            Cancel
-          </Link>
-
-          <button
-            type="submit"
-            disabled={submitting}
-            className="px-5 py-1.5 text-sm bg-orange-500 rounded-full text-black"
-          >
+          )}
+        </div>
+        <div className="flex justify-evenly items-center gap-6">
+          <button type="submit" disabled={submitting} className="submit_button">
             {submitting ? `Creating ${type}...` : `Create ${type}`}
           </button>
         </div>
