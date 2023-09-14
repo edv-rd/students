@@ -2,6 +2,8 @@ import { connectToDB } from "@/utils/database";
 import Entry, { Entries } from "@models/entries";
 import Assignments from "@components/Assignments";
 
+export const revalidate = 0;
+
 type Props = {
   assignments: Entries[];
 };

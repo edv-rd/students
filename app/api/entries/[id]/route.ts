@@ -19,8 +19,6 @@ export const DELETE = async (request: Request) => {
       .collection("entries")
       .deleteOne({ _id: new ObjectId(id) });
 
-    console.log(result);
-
     if (result.deletedCount === 1) {
       return new Response("Entry deleted successfully", { status: 200 });
     } else {
