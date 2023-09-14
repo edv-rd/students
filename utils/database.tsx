@@ -1,7 +1,8 @@
-import mongoose from "mongoose";
+import mongoose, { Connection } from "mongoose";
 
 let isConnected = false; // track the connection
 let DB_URL: string;
+let db: Connection;
 
 export const connectToDB = async () => {
   if (process.env.DB_URL) {
@@ -14,10 +15,9 @@ export const connectToDB = async () => {
 
   if (isConnected) {
     console.log("MongoDB is already connected");
+    return db;
     return;
   }
-
-  console.log(DB_URL);
 
   try {
     await mongoose.connect(DB_URL, {
@@ -26,7 +26,11 @@ export const connectToDB = async () => {
 
     isConnected = true;
 
+    db = mongoose.connection;
+
     console.log("MongoDB connected");
+
+    return db;
   } catch (error) {
     console.log(error);
   }
