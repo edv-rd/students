@@ -38,8 +38,7 @@ function Actions({ id }: ActionsProps) {
   };
 
   return (
-    <div>
-      Actions for id {id}
+    <div className="flex flex-row justify-start gap-5">
       <p className="cursor-pointer" onClick={handleEdit}>
         <FontAwesomeIcon icon={faPenToSquare} />
       </p>
